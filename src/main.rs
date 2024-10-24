@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use ckb_merkle_mountain_range;
 use ckb_merkle_mountain_range::{Error, Merge, MMR, Result};
 use ckb_merkle_mountain_range::util::MemStore;
@@ -36,13 +37,22 @@ impl Merge for MergeNumberHash {
     }
 }
 
+struct MMRV<V, M> {
+    versions: HashMap<NumberHash, (NumberHash, NumberHash)>,
+    current: MMR::<V, M, V>
+}
+
 fn main() {
     let store = MemStore::default();
     let mut mmr = MMR::<_, MergeNumberHash, _>::new(0, &store);
 
-    (0..10).for_each(|i| {
-        mmr.push(NumberHash::try_from(i).unwrap()).unwrap();
-    });
+    let ids: Vec<_> = (0u32..50u32).map(|i| {
+        let awd = NumberHash::try_from(i).unwrap();
 
-    println!("{:?}", mmr.mmr_size())
+        println!("test: {awd:?}");
+
+        mmr.push(awd).unwrap()
+    }).collect();
+
+    println!("{:?}", ids)
 }
