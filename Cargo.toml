@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-ckb-merkle-mountain-range = "0.6.0"
+ckb-merkle-mountain-range = { version = "0.6.0", path = "merkle-mountain-range" }
 bytes = "1.8.0"
 blake2b-rs = "0.2.0"

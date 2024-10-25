@@ -1,0 +1,3 @@
+[submodule "merkle-mountain-range"]
+	path = merkle-mountain-range
+	url = https://github.com/matevszm/merkle-mountain-range.git

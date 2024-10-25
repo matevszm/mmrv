@@ -60,5 +60,9 @@ fn main() {
         mmr.push(awd).unwrap()
     }).collect();
 
-    println!("{:?}", ids)
+    println!("{:?}", ids);
+
+    let test = mmr.get_root().unwrap();
+    println!("{:?}", test)
+
 }
